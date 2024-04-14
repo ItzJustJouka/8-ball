@@ -3,6 +3,10 @@ const button = document.querySelector(".send-button");
 const container = document.querySelector(".ball-container");
 const shakeSound = new Audio("src/assets/shake.mp3");
 const resultSound = new Audio("src/assets/result.mp3");
+
+document.addEventListener('DOMContentLoaded', () => {
+  input.focus();
+});
 const answers = [
   // Positive Answers
   ["Yes",
@@ -73,7 +77,11 @@ function handleClick() {
   
   moveBall();
   setTimeout(() => {
-    response.textContent = answer;
+    console.log(input);
+    console.log(input.value.toLowerCase().split(" ").join(""));
+    if(input.value.toLowerCase().split(" ").join("") === "tobeornottobe" || input.value.toLowerCase().split(" ").join("") === "tobeornottobe") response.textContent = "That is the question.";
+    else response.textContent = answer;
+    console.log(response.textContent);
     response.classList.remove("inactive");
     response.classList.add("active");
     resultSound.play();
